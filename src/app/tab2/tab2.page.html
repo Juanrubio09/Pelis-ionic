@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Descripcion de la pelicula</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.favorite]="isFavorite">
+  <ion-card>
+    <ion-card-content>
+      <h1>{{ movieName }}</h1>
+      <p>{{ movieDescription }}</p> <br>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <ion-icon name="heart" (click)="incrementLikeCount()"> </ion-icon> <br>
+          <ion-label>Me gusta</ion-label>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <ion-icon name="star" [color]="isFavorite ? 'warning' : 'primary'"
+          (click)="toggleFavorite()"></ion-icon> <br>
+          <ion-label>favoritos </ion-label>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <ion-icon name="bookmark"  (click)="showShareAlert()"></ion-icon> <br>
+          <ion-label>comparte</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!-- Contenedor para mostrar el contador -->
+<ion-row class="ion-align-items-center">
+  <ion-col size="12" class="ion-text-center">
+    <p class="like-count">Likes: {{ likeCount }}</p>
+    <p *ngIf="isFavorite" class="favorite-label">Favorito</p>
+  </ion-col>
+</ion-row>
